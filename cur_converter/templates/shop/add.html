@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency_converter</title>
+  <style>
+    body {
+      margin: 0;  padding: 0; background-position: top; background-repeat: no-repeat; background-size: cover;
+      display: flex;  align-items: center;  justify-content: center;
+      min-height: 100vh; font-size: 50px; 
+      background-image: url('static/c.jpg'); font-family:'Times New Roman', Times, serif;
+    }
+
+    .form{
+      background-color: transparent ;  backdrop-filter: blur(20px);
+      padding: 20px;  max-width: 100%;  box-sizing: border-box;
+      max-width: 700px; border-radius: 0px;  height: 320px;
+      margin: 20px;
+    }
+
+    .form:hover{
+      box-shadow: 2px 2px 70px 5px #ffffff;
+    }
+
+    .form h1 {
+      font-size: 50px;  text-align: center;  transform: scaleY(1.2);
+      margin: 15px 0px -5px 0px ; font-family:'Times New Roman', Times, serif;
+      color: #5469D4;
+    }
+    .input {
+      padding: 10px   8px; width: 100%;  box-sizing: border-box; 
+      max-width: 150px; outline: none; border-radius: 10px; 
+      font-size: 20px; border: 1px solid #5469D4;
+      
+    }
+    .input_group {
+      position: relative; margin: -20px 0px 25px 0px; 
+      padding: 2px 0px; 
+    }
+
+    .group {
+      position: relative; margin: -20px 0px 25px 0px; 
+      width: 300px;  height: 40px; color: #5469D4;
+      position: relative; top: -90px; left: 322px; font-size: 20px;
+      border-radius: 10px; border: 1px  solid #5469D4; 
+      text-align: center; font-family: 'Times New Roman', Times, serif;
+    }
+    .o_group  {
+      position: relative; 
+    }
+
+    .o_group label {
+      position: absolute; top: -68px; right: 80px;  
+      font-size: 30px; color:#5469D4;
+    }
+
+    .group:focus {
+      box-shadow: 2px 2px 30px 2px #9f9f9f; outline: #5469D4;
+      font-weight:1000; color: #5469D4;
+    }
+
+
+
+    .button {
+      background-color: #5469D4;  color: #fff; position: relative;
+      border: 0px;  padding: 2px 1px;  cursor: pointer; top: -74px; 
+      float: right; box-shadow: 2px 2px 10px 0px #666; left: -340px;
+      width: 132px; height: 48px; border-radius: 10px; font-size: 24px;
+
+    }
+
+    .input:focus + .placeholder {
+       transition: 0.5s; top: 5px; font-size: 15px; 
+       border-radius: 4px; padding: 0px 4px ; color: transparent;
+    }
+
+
+
+
+    .input_group .input:focus {
+      outline: 1px solid black;  transition: 0.5s;  
+      border: 2px solid #5469D4; box-shadow: 2px 2px 30px 2px #9f9f9f;
+    
+    }
+
+    .button:hover {
+      box-shadow: 2px 4px 50px 2px #9f9f9f;
+      color:#5469D4; background-color: #fff ;
+      
+    }
+
+    #from { 
+      width: 300px; height: 50px ; border: 1px solid #5469D4;
+      border-radius: 10px;  padding: 10px; font-size: 20px;
+      color: #5469D4; overflow-x: scroll; 
+    }
+
+    #to { 
+      width: 300px; height: 50px ; border: 1px solid #5469D4;
+      border-radius: 10px;  padding: 10px;  margin: 0px 10px;
+      font-size: 20px;  color: #5469D4;
+        
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <form class = "form" id = 'form'   action = "addition" method = "get">
+    {% csrf_token %} 
+
+    <h1>CURRENCY CONVERTER</h1><hr>
+
+    <div class="input_group">
+      
+      <select name="a" id="from" required >
+      
+        <option value=" "  disabled selected hidden>CHANGE CURRENCY FROM</option>
+        <option value="AFN">AFGHANISTHAN</option>
+        <option value="ALL">ALBANIA</option>
+        <option value="DZD">ALGERIA</option>
+        <option value="USD">AMERICAN SAMOA</option>
+        <option value="EUR">ANDORRA</option>
+        <option value="AOA">ANGOLA</option>
+        <option value="XCD">ANGUILLA</option>
+        <option value="XCD">ANTIGUA AND BARBUDA</option>
+        <option value="ARS">ARGENTINA</option>
+        <option value="AMD">ARMENIA</option>
+        <option value="AWG">ARUBA</option>
+        <option value="AUD">AUSTRALIA</option>
+        <option value="EUR">AUSTRIA</option>
+        <option value="AZN">AZERBAIJAN</option>
+        <option value="BSD">BAHAMAS</option>
+        <option value="BHD">BAHRAIN</option>
+        <option value="BDT">BANGLADESH</option>
+        <option value="BBD">BARBADOS</option>
+        <option value="BYN">BELARUS</option>
+        <option value="EUR">BELGIUM</option>
+        <option value="BZD">BELIZE</option>
+        <option value="XOF">BENIN</option>
+        <option value="BMD">BERMUDA</option>
+        <option value="BTN">BHUTAN</option>
+        <option value="IND">BHUTAN</option>
+        <option value="BOB">BOLIVIA</option>
+        <option value="USD">BONAIRE, SABA</option>
+        <option value="BAM">BOSNIA AND HERZEGOVINA</option>
+        <option value="BWP">BOTSWANA</option>
+        <option value="NOK">BOUVET ISLAND</option>
+        <option value="BRL">BRAZIL</option>
+        <option value="USD">BRITISH INDIAN OCEAN TERRITORY</option>
+        <option value="BND">BRUNEI DARUSSALAM</option>
+        <option value="BGN">BULGARIA</option>
+        <option value="XOF">BURKINA FASO</option>
+        <option value="BIF">BURUNDI</option>
+        <option value="CVE">CABO VERDE</option>
+        <option value="KHR">CAMBODIA</option>
+        <option value="XAF">CAMEROON</option>
+        <option value="CAD">CANADA</option>
+        <option value="KYD">CAYMAN ISLANDS</option>
+        <option value="XAF">CENTRAL AFRICAN REPUBLIC</option>
+        <option value="XAF">CHAD</option>
+        <option value="CLF">CHILE</option>
+        <option value="CLP">CHILE</option>
+        <option value="CNY">CHINA</option>
+        <option value="AUD">CHRISTMAS ISLAND</option>
+        <option value="AUD">COCOS</option>
+        <option value="COP">COLOMBIA</option>
+        <option value="COU">COLOMBIA</option>
+        <option value="KMF">COMOROS</option>
+        <option value="CDF">CONGO</option>
+        <option value="XAF">CONGO</option>
+        <option value="NZD">COOK ISLANDS</option>
+        <option value="CRC">COSTA RICA</option>
+        <option value="EUR">CROATIA</option>
+        <option value="CUC">CUBA</option>
+        <option value="CUP">CUBA</option>
+        <option value="ANG">CURACAO</option>
+        <option value="EUR">CYPRUS</option>
+        <option value="CZK">CZECH REPUBLIC</option>
+        <option value="XOF">COTE DIVOIRE</option>
+        <option value="DKK">DENMARK</option>
+        <option value="DJF">DJIBOUTI</option>
+        <option value="XCD">DOMINICA</option>
+        <option value="DOP">DOMINICAN REPUBLIC</option>
+        <option value="USD">EGYPT</option>
+        <option value="SVC">EL SALVADOR</option>
+        <option value="ERN">ERITREA</option>
+        <option value="EUR">EUROPEAN UNION</option>
+        <option value="FKP">FALKLAND</option>
+        <option value="DKK">FAROE ISLANDS</option>
+        <option value="FJD">FIJI</option>
+        <option value="EUR">FINLAND</option>
+        <option value="EUR">FRANCE</option>
+        <option value="GMD">GAMBIA</option>
+        <option value="GEL">GEORGIA</option>
+        <option value="EUR">GREECE</option>
+        <option value="DKK">GREENLAND</option>
+        <option value="HTG">HAITI</option>
+        <option value="EUR">HOLY SEE</option>
+        <option value="INR">INDIA</option>
+        <option value="IDR">INDONESIA</option>
+        <option value="IRR">IRAN</option>
+        <option value="IQD">IRAQ</option>
+        <option value="EUR">IRELAND</option>
+        <option value="ILS">ISRAEL</option>
+        <option value="EUR">ITALY</option>
+        <option value="JPY">JAPAN</option>
+        <option value="GBP">JERSEY</option>
+        <option value="KES">KENYA</option>
+        <option value="KRW">KOREA</option>
+        <option value="LRD">LIBERIA</option>
+        <option value="MGA">MADAGASCAR</option>
+        <option value="MYR">MALAYSIA</option>
+        <option value="MVR">MALDIVES</option>
+        <option value="MXV">MEXICO</option>
+        <option value="EUR">MONACO</option>
+        <option value="MAD">MOROCCO</option>
+        <option value="ZAR">NAMIBIA</option>
+        <option value="NPR">NEPAL</option>
+        <option value="EUR">NETHERLANDS</option>
+        <option value="NZD">NEW ZEALAND</option>
+        <option value="NGN">NIGERIA</option>
+        <option value="OMR">OMAN</option>
+        <option value="PKR">PAKISTAN</option>
+        <option value="PAB">PANAMA</option>
+        <option value="PEN">PERU</option>
+        <option value="EUR">PORTUGAL</option>
+        <option value="RUB">RUSSIAN FEDERATION</option>
+        <option value="RSD">SERBIA</option>
+        <option value="SGD">SINGAPORE</option>
+        <option value="EUR">SLOVAKIA</option>
+        <option value="ZAR">SOUTH AFRICA</option>
+        <option value="EUR">SPAIN</option>
+        <option value="LKR">SRI LANKA</option>
+        <option value="SEK">SWEDEN</option>
+        <option value="CHF">SWITERLAND</option>
+        <option value="TWD">TAIWAN</option>
+        <option value="THB">THAILAND</option>
+        <option value="TRY">TURKEY</option>
+        <option value="UAH">UKARINE</option>
+        <option value="AED">UNITED ARAB EMIRATES</option>
+        <option value="USD">UNITED STATS OF AMERICA </option>
+        <option value="GBP">UNITED KINGDOM</option>
+        <option value="VND">VIET NAM</option>
+        <option value="USD">VIRGIN ISLANDS</option>
+        <option value="MAD">WESTERN SAHARA</option>
+        <option value="YER">YEMEN</option>
+        <option value="ZWL">ZIMBABWE</option>
+
+      </select>
+
+      <select name="b" id="to" required>
+      
+        <option value=" "  disabled selected hidden>CHANGE CURRENCY TO</option>
+        <option value="AFN">AFGHANISTHAN</option>
+        <option value="ALL">ALBANIA</option>
+        <option value="DZD">ALGERIA</option>
+        <option value="USD">AMERICAN SAMOA</option>
+        <option value="EUR">ANDORRA</option>
+        <option value="AOA">ANGOLA</option>
+        <option value="XCD">ANGUILLA</option>
+        <option value="XCD">ANTIGUA AND BARBUDA</option>
+        <option value="ARS">ARGENTINA</option>
+        <option value="AMD">ARMENIA</option>
+        <option value="AWG">ARUBA</option>
+        <option value="AUD">AUSTRALIA</option>
+        <option value="EUR">AUSTRIA</option>
+        <option value="AZN">AZERBAIJAN</option>
+        <option value="BSD">BAHAMAS</option>
+        <option value="BHD">BAHRAIN</option>
+        <option value="BDT">BANGLADESH</option>
+        <option value="BBD">BARBADOS</option>
+        <option value="BYN">BELARUS</option>
+        <option value="EUR">BELGIUM</option>
+        <option value="BZD">BELIZE</option>
+        <option value="XOF">BENIN</option>
+        <option value="BMD">BERMUDA</option>
+        <option value="BTN">BHUTAN</option>
+        <option value="IND">BHUTAN</option>
+        <option value="BOB">BOLIVIA</option>
+        <option value="USD">BONAIRE, SABA</option>
+        <option value="BAM">BOSNIA AND HERZEGOVINA</option>
+        <option value="BWP">BOTSWANA</option>
+        <option value="NOK">BOUVET ISLAND</option>
+        <option value="BRL">BRAZIL</option>
+        <option value="USD">BRITISH INDIAN OCEAN TERRITORY</option>
+        <option value="BND">BRUNEI DARUSSALAM</option>
+        <option value="BGN">BULGARIA</option>
+        <option value="XOF">BURKINA FASO</option>
+        <option value="BIF">BURUNDI</option>
+        <option value="CVE">CABO VERDE</option>
+        <option value="KHR">CAMBODIA</option>
+        <option value="XAF">CAMEROON</option>
+        <option value="CAD">CANADA</option>
+        <option value="KYD">CAYMAN ISLANDS</option>
+        <option value="XAF">CENTRAL AFRICAN REPUBLIC</option>
+        <option value="XAF">CHAD</option>
+        <option value="CLF">CHILE</option>
+        <option value="CLP">CHILE</option>
+        <option value="CNY">CHINA</option>
+        <option value="AUD">CHRISTMAS ISLAND</option>
+        <option value="AUD">COCOS</option>
+        <option value="COP">COLOMBIA</option>
+        <option value="COU">COLOMBIA</option>
+        <option value="KMF">COMOROS</option>
+        <option value="CDF">CONGO</option>
+        <option value="XAF">CONGO</option>
+        <option value="NZD">COOK ISLANDS</option>
+        <option value="CRC">COSTA RICA</option>
+        <option value="EUR">CROATIA</option>
+        <option value="CUC">CUBA</option>
+        <option value="CUP">CUBA</option>
+        <option value="ANG">CURACAO</option>
+        <option value="EUR">CYPRUS</option>
+        <option value="CZK">CZECH REPUBLIC</option>
+        <option value="XOF">COTE DIVOIRE</option>
+        <option value="DKK">DENMARK</option>
+        <option value="DJF">DJIBOUTI</option>
+        <option value="XCD">DOMINICA</option>
+        <option value="DOP">DOMINICAN REPUBLIC</option>
+        <option value="USD">EGYPT</option>
+        <option value="SVC">EL SALVADOR</option>
+        <option value="ERN">ERITREA</option>
+        <option value="EUR">EUROPEAN UNION</option>
+        <option value="FKP">FALKLAND</option>
+        <option value="DKK">FAROE ISLANDS</option>
+        <option value="FJD">FIJI</option>
+        <option value="EUR">FINLAND</option>
+        <option value="EUR">FRANCE</option>
+        <option value="GMD">GAMBIA</option>
+        <option value="GEL">GEORGIA</option>
+        <option value="EUR">GREECE</option>
+        <option value="DKK">GREENLAND</option>
+        <option value="HTG">HAITI</option>
+        <option value="EUR">HOLY SEE</option>
+        <option value="INR">INDIA</option>
+        <option value="IDR">INDONESIA</option>
+        <option value="IRR">IRAN</option>
+        <option value="IQD">IRAQ</option>
+        <option value="EUR">IRELAND</option>
+        <option value="ILS">ISRAEL</option>
+        <option value="EUR">ITALY</option>
+        <option value="JPY">JAPAN</option>
+        <option value="GBP">JERSEY</option>
+        <option value="KES">KENYA</option>
+        <option value="KRW">KOREA</option>
+        <option value="LRD">LIBERIA</option>
+        <option value="MGA">MADAGASCAR</option>
+        <option value="MYR">MALAYSIA</option>
+        <option value="MVR">MALDIVES</option>
+        <option value="MXV">MEXICO</option>
+        <option value="EUR">MONACO</option>
+        <option value="MAD">MOROCCO</option>
+        <option value="ZAR">NAMIBIA</option>
+        <option value="NPR">NEPAL</option>
+        <option value="EUR">NETHERLANDS</option>
+        <option value="NZD">NEW ZEALAND</option>
+        <option value="NGN">NIGERIA</option>
+        <option value="OMR">OMAN</option>
+        <option value="PKR">PAKISTAN</option>
+        <option value="PAB">PANAMA</option>
+        <option value="PEN">PERU</option>
+        <option value="EUR">PORTUGAL</option>
+        <option value="RUB">RUSSIAN FEDERATION</option>
+        <option value="RSD">SERBIA</option>
+        <option value="SGD">SINGAPORE</option>
+        <option value="EUR">SLOVAKIA</option>
+        <option value="ZAR">SOUTH AFRICA</option>
+        <option value="EUR">SPAIN</option>
+        <option value="LKR">SRI LANKA</option>
+        <option value="SEK">SWEDEN</option>
+        <option value="CHF">SWITERLAND</option>
+        <option value="TWD">TAIWAN</option>
+        <option value="THB">THAILAND</option>
+        <option value="TRY">TURKEY</option>
+        <option value="UAH">UKARINE</option>
+        <option value="AED">UNITED ARAB EMIRATES</option>
+        <option value="USD">UNITED STATS OF AMERICA </option>
+        <option value="GBP">UNITED KINGDOM</option>
+        <option value="VND">VIET NAM</option>
+        <option value="USD">VIRGIN ISLANDS</option>
+        <option value="MAD">WESTERN SAHARA</option>
+        <option value="YER">YEMEN</option>
+        <option value="ZWL">ZIMBABWE</option>
+
+      </select>
+
+    </div>
+    <div class="input_group">
+      <input type="text" name = 'amount' id = 'amount'  class = 'input' required><label class = "placeholder"></label>
+    </div>
+  
+    <button  type = "submit" onclick = 'save()' class = 'button' >🔁</button>
+    
+    <div class="o_group"> 
+      <input type="text" class = 'group'><br><label>{{ result }} </label>
+    </div>
+    
+  </form>
+  <script>
+    // Load stored value
+    
+    var storedValue = localStorage.getItem("inputValue");
+    if (storedValue) {
+        document.getElementById("amount").value = storedValue;
+    }
+  
+    function save() {
+        var inputValue = document.getElementById("amount").value;
+        localStorage.setItem("inputValue", inputValue);
+    }
+
+  
+
+  </script>
+
+</body>
+</html>
+
+<!--
+
+<form onsubmit="return false;">
+  <input type="text" id="myInput">
+  <button onclick="save()">Save</button>
+</form>
+
+<script>
+  // Load stored value
+  var storedValue = localStorage.getItem("inputValue");
+  if (storedValue) {
+      document.getElementById("amount").value = storedValue;
+  }
+
+  function save() {
+      var inputValue = document.getElementById("amount").value;
+      localStorage.setItem("inputValue", inputValue);
+  }
+</script>
+
+
+<input type="text" id="inputField1">
+<input type="text" id="inputField2">
+<button onclick="saveInputs()">Save</button>
+
+<script>
+    // Load stored values
+    var storedValue1 = localStorage.getItem("inputValue1");
+    var storedValue2 = localStorage.getItem("inputValue2");
+
+    if (storedValue1) {
+        document.getElementById("inputField1").value = storedValue1;
+    }
+
+    if (storedValue2) {
+        document.getElementById("inputField2").value = storedValue2;
+    }
+
+    function saveInputs() {
+        var inputValue1 = document.getElementById("inputField1").value;
+        var inputValue2 = document.getElementById("inputField2").value;
+
+        localStorage.setItem("inputValue1", inputValue1);
+        localStorage.setItem("inputValue2", inputValue2);
+    }
+</script>
+var  a_store = localStorage.getItem("a");
+var  b_store = localStorage.getItem("b");
+var  m_store = localStorage.getItem("amount");
+
+    if (a_store) {
+        document.getElementById("inputField1").value = a_store;
+    }
+
+    if (b_store) {
+        document.getElementById("inputField2").value = b_store;
+    }
+
+        if (m_store) {
+        document.getElementById("inputField3").value = m_store;
+    }
+
+    function saveInputs() {
+        var inputValue1 = document.getElementById("inputField1").value;
+        var inputValue2 = document.getElementById("inputField2").value;
+        var inputValue3 = document.getElementById("inputField3").value;
+
+        localStorage.setItem("inputValue1", inputValue1);
+        localStorage.setItem("inputValue2", inputValue2);
+        localStorage.setItem("inputValue3", inputValue3);
+    }
+
+-->

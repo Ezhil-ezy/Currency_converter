@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    *{
+      background: #ffffff;
+    }
+    body{
+      margin: 0; padding: 0; display: flex; 
+      align-items: center;  justify-content: center; 
+      min-height: 100vh;  font-family:  sans-serif;
+
+    }
+
+    .cc {
+      font-size: 10px; top: -10px; position: relative;
+      width: 300px; height: 120px;
+      margin: 2px 2px 2px -1px ;  border-radius: 10px; 
+      border: 1px dashed rgb(247, 245, 245);  
+      
+
+    }
+    
+    .cuc{
+      font-size: 40px; text-align: center; padding: 10px 30px; 
+      height: 20px; font-family: Times ;
+      font-stretch: 150%; transform: scaleY(1.2);
+      text-decoration: underline 1px;
+    }
+
+    .coc{
+      font-size: 17px; text-align: center; position: relative; top: 20px; 
+      padding: 2px 20px; font-family:serif ;  
+      text-decoration: underline 2px ;   
+      
+    }
+
+    .form {
+      background-color: #f8f6fa;
+      padding: 40px ; width: 100%;
+      max-width: 380px; box-sizing: border-box;
+      border-radius: 19px; height: 600px;
+      border: 5px solid #000000;
+
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input {
+      padding: 10px;  width: 100%; 
+      max-width: 300px; margin: 10px -15px 10px 1px;
+      box-sizing: border-box; border: 1px solid #04AA6D;
+      border-radius: 5px;
+       
+    }
+
+    .placeholder {
+      
+      position: absolute; transition: 0.3s; 
+      pointer-events: none;
+      top: 20px;  left: 15px; color: #666;
+
+    }
+
+    .input:focus + .placeholder {
+      font-size: 15px; top: -5px; padding: 5px; border-radius: 5px; 
+      color: #04AA6D; background-color: #fff; padding: 5px;
+      
+    }
+
+    .input:focus {
+      outline: 1px solid #04AA6D;
+    }
+
+    .Amount input {
+        font-size: 30px; border-radius: 10px; 
+        font-family: Verdana, sans-serif; 
+        position: relative; top :10px; 
+    }
+
+    .Amount .input:focus + .placeholder  {
+      color: #000000; background-color: #00b170;
+      outline: 3px solid #04AA6D; 
+    }
+
+    button {
+      width: 200px; margin: 11px; 
+      height: 45px;color: #00b170;
+      border-radius: 30px; 
+      border: 2px solid #00b170; position: relative; 
+      left: 40px; font-size: 30px; 
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .result input {
+      height: 90px; font-size: 30px; 
+      border-radius: 10px;   
+      font-family: Verdana, sans-serif; 
+      position: relative; top : 70px;
+    }
+
+    .result  .input:focus {
+      color: #000000;  
+      outline: 3px solid #04AA6D; padding: 20px;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  
+  <form class = "form">
+
+    <div class = "cc">
+      <div class = 'cuc'>CURRENCY</div>
+      <div class = 'coc'>.  CONVERTER  .</div>
+    </div>
+
+
+    <div class = "input-group">
+      
+      <input type = "text" class = "input from_">
+        <label class = "placeholder">Change currency from</label>
+      </div>
+      <div class = "input-group">
+        <input type = "text" class = "input to ">
+        <label class = "placeholder">Change currency to</label>
+    </div>
+    <div class = "input-group">
+      <input type = "text" class = "input">
+      <label class = "placeholder">Enter your amount</label>
+  </div>
+
+  <div class = 'button'> 
+    <button type = "button"> convert</button>
+    </div>
+
+    <div class = 'result'> 
+      <input type = "text" class = "input" placeholder = " Result">
+      </div>
+
+  </form>
+</body>
+</html>
+
